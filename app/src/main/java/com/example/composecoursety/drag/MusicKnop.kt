@@ -4,9 +4,11 @@ import android.util.Log
 import android.view.MotionEvent
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -23,10 +25,43 @@ import androidx.compose.ui.input.pointer.pointerInteropFilter
 import androidx.compose.ui.layout.boundsInWindow
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import com.example.composecoursety.R
 import java.util.logging.Logger
 import kotlin.math.PI
 import kotlin.math.atan2
+import kotlin.math.roundToInt
+
+@ExperimentalComposeUiApi
+@Composable
+fun Output() {
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .background(Color.Black)
+        , contentAlignment = Alignment.Center) {
+        /*CircleProgress(0.8f, 100)*/
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .height(200.dp)
+            .border(
+                5.dp,
+                color = Color.Green,
+                shape = RoundedCornerShape(corner = CornerSize(5.dp))
+            ).padding(15.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start) {
+            val percent = remember {
+                mutableStateOf(0f)
+            }
+            MusicKnob(modifier = Modifier.size(100.dp)) {
+                percent.value = it
+            }
+            Spacer(modifier = Modifier.width(10.dp))
+            VolumeBox(modifier = Modifier.height(100.dp), actionBar = (percent.value * 10).roundToInt())
+        }
+    }
+}
+
 
 @ExperimentalComposeUiApi
 @Composable
@@ -62,7 +97,8 @@ fun MusicKnob(
         .pointerInteropFilter { event ->
             touchX.value = event.x
             touchY.value = event.y
-            val angle = -atan2(centerX.value - touchX.value, centerY.value - touchY.value) * 180f / PI
+            val angle =
+                -atan2(centerX.value - touchX.value, centerY.value - touchY.value) * 180f / PI
             Log.d("xxx", "angle :$angle event.action ${event.action}")
             when (event.action) {
                 MotionEvent.ACTION_MOVE -> {
@@ -75,7 +111,7 @@ fun MusicKnob(
                         rotate.value = fixedAngle.toFloat()
                         val percent = (fixedAngle - limitAngle) / (360f - 2 * limitAngle)
                         onValueChange(percent.toFloat())
-                        Log.d("xxx",  "percent :$percent angle :$angle")
+                        Log.d("xxx", "percent :$percent angle :$angle")
                         return@pointerInteropFilter true
                     } else {
                         Log.d("xxx", "percent :$0 false")
@@ -84,7 +120,7 @@ fun MusicKnob(
                 }
 
                 else -> {
-                    return@pointerInteropFilter false
+                    return@pointerInteropFilter true
                 }
             }
         }

@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.composecoursety.drag.MusicKnob
 import com.example.composecoursety.drag.VolumeBox
+import com.example.composecoursety.timer.CountDownTimer
 import com.example.composecoursety.ui.theme.ComposeCourseTYTheme
 import kotlin.math.roundToInt
 import kotlin.random.Random
@@ -48,30 +49,19 @@ class MainActivity : ComponentActivity() {
             Font(R.font.merriweather_regular, FontWeight.Normal)
         )
         setContent {
-            Box(modifier = Modifier
-                .fillMaxSize()
-                .background(Color.Black)
-                , contentAlignment = Alignment.Center) {
-                /*CircleProgress(0.8f, 100)*/
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .border(
-                        5.dp,
-                        color = Color.Green,
-                        shape = RoundedCornerShape(corner = CornerSize(5.dp))
-                    ).padding(15.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Start) {
-                    val percent = remember {
-                        mutableStateOf(0f)
-                    }
-                    MusicKnob(modifier = Modifier.size(100.dp)) {
-                        percent.value = it
-                    }
-                    Spacer(modifier = Modifier.width(10.dp))
-                    VolumeBox(modifier = Modifier.height(100.dp), actionBar = (percent.value * 10).roundToInt())
-                }
+            Surface(
+                color = Color(0xFF010101),
+                modifier = Modifier.fillMaxSize()
+            ) {
+               Box(contentAlignment = Alignment.Center) {
+                   CountDownTimer(
+                       totalTime = 100 * 1000,
+                       handleColor = Color.Green,
+                       inactiveBarColor = Color.DarkGray,
+                       activeBarColor = Color.Green,
+                       modifier = Modifier.size(200.dp)
+                   )
+               }
             }
         }
     }
