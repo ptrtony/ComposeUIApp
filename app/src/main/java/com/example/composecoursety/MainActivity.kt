@@ -30,11 +30,8 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.composecoursety.drag.MusicKnob
-import com.example.composecoursety.drag.VolumeBox
-import com.example.composecoursety.timer.CountDownTimer
+import com.example.composecoursety.three_d_animation.DownUp
 import com.example.composecoursety.ui.theme.ComposeCourseTYTheme
-import kotlin.math.roundToInt
 import kotlin.random.Random
 
 @ExperimentalComposeUiApi
@@ -51,30 +48,22 @@ class MainActivity : ComponentActivity() {
         setContent {
             Surface(
                 color = Color(0xFF010101),
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
             ) {
-               Box(contentAlignment = Alignment.Center) {
-                   Box(modifier = Modifier
-                       .size(200.dp)
-                       .background(color = Color.Green)
-                       .padding(5.dp)
-                       .background(color = Color.Red)
-                       .padding(5.dp)
-                       .background(color = Color.Blue)
-                       .padding(5.dp)
-                       .background(color = Color.Yellow)
-                       .padding(5.dp)
-                       .background(color = Color.White)
-                   ) {
-                   }
-//                   CountDownTimer(
-//                       totalTime = 100 * 1000,
-//                       handleColor = Color.Green,
-//                       inactiveBarColor = Color.DarkGray,
-//                       activeBarColor = Color.Green,
-//                       modifier = Modifier.size(200.dp)
-//                   )
-               }
+                DownUp(text = "Test", modifier = Modifier.padding(15.dp)) {
+                    Text(
+                        modifier = Modifier.align(Alignment.TopCenter)
+                            .fillMaxWidth()
+                            .height(200.dp)
+                            .background(Color.Green),
+                        text = "Hello world!",
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        textAlign = TextAlign.Center,
+                    )
+                }
             }
         }
     }
