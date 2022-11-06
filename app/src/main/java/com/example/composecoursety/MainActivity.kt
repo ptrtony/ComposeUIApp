@@ -54,13 +54,26 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize()
             ) {
                Box(contentAlignment = Alignment.Center) {
-                   CountDownTimer(
-                       totalTime = 100 * 1000,
-                       handleColor = Color.Green,
-                       inactiveBarColor = Color.DarkGray,
-                       activeBarColor = Color.Green,
-                       modifier = Modifier.size(200.dp)
-                   )
+                   Box(modifier = Modifier
+                       .size(200.dp)
+                       .background(color = Color.Green)
+                       .padding(5.dp)
+                       .background(color = Color.Red)
+                       .padding(5.dp)
+                       .background(color = Color.Blue)
+                       .padding(5.dp)
+                       .background(color = Color.Yellow)
+                       .padding(5.dp)
+                       .background(color = Color.White)
+                   ) {
+                   }
+//                   CountDownTimer(
+//                       totalTime = 100 * 1000,
+//                       handleColor = Color.Green,
+//                       inactiveBarColor = Color.DarkGray,
+//                       activeBarColor = Color.Green,
+//                       modifier = Modifier.size(200.dp)
+//                   )
                }
             }
         }
