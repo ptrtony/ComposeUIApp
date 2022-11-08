@@ -3,11 +3,13 @@ package com.example.composecoursety.three_d_animation
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -22,8 +24,33 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+
+@Composable
+fun Main() {
+    Surface(
+        color = Color(0xFF010101),
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        DownUp(text = "Test", modifier = Modifier.padding(15.dp)) {
+            Text(
+                modifier = Modifier.align(Alignment.TopCenter)
+                    .fillMaxWidth()
+                    .height(200.dp)
+                    .background(Color.Green),
+                text = "Hello world!",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black,
+                textAlign = TextAlign.Center,
+            )
+        }
+    }
+}
+
 
 @Composable
 fun DownUp(

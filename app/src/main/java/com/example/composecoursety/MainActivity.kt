@@ -30,6 +30,8 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.composecoursety.navigation.Navigation
+import com.example.composecoursety.splash.Main
 import com.example.composecoursety.three_d_animation.DownUp
 import com.example.composecoursety.ui.theme.ComposeCourseTYTheme
 import kotlin.random.Random
@@ -46,25 +48,7 @@ class MainActivity : ComponentActivity() {
             Font(R.font.merriweather_regular, FontWeight.Normal)
         )
         setContent {
-            Surface(
-                color = Color(0xFF010101),
-                modifier = Modifier
-                    .fillMaxSize()
-            ) {
-                DownUp(text = "Test", modifier = Modifier.padding(15.dp)) {
-                    Text(
-                        modifier = Modifier.align(Alignment.TopCenter)
-                            .fillMaxWidth()
-                            .height(200.dp)
-                            .background(Color.Green),
-                        text = "Hello world!",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Black,
-                        textAlign = TextAlign.Center,
-                    )
-                }
-            }
+            Main()
         }
     }
 
