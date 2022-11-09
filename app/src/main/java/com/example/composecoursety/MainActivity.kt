@@ -10,7 +10,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
+import androidx.compose.material.Button
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
@@ -30,13 +33,11 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.composecoursety.navigation.Navigation
+import com.example.composecoursety.navigation.ScaffoldMain
 import com.example.composecoursety.splash.Main
-import com.example.composecoursety.three_d_animation.DownUp
 import com.example.composecoursety.ui.theme.ComposeCourseTYTheme
 import kotlin.random.Random
 
-@ExperimentalComposeUiApi
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +49,7 @@ class MainActivity : ComponentActivity() {
             Font(R.font.merriweather_regular, FontWeight.Normal)
         )
         setContent {
-            Main()
+            ScaffoldMain()
         }
     }
 

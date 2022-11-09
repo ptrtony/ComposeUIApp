@@ -5,9 +5,8 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,7 +25,7 @@ import kotlinx.coroutines.delay
 
 @Composable
 fun Main() {
-    Surface(color = MaterialTheme.colorScheme.background) {
+    Surface(color = Color(0xFf010101)) {
         Navigation()
     }
 }
@@ -85,7 +84,7 @@ fun MainScreen() {
     ) {
         Text(
             text = "MAIN SCREEN",
-            color = Color.Black,
+            color = Color.White,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold
         )
