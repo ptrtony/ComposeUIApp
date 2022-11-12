@@ -35,9 +35,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.composecoursety.multiselect.MultiSelectedDemo
 import com.example.composecoursety.parallaxscroll.ParallaxScrollScreen
+import com.example.composecoursety.permission.PermissionDemo
 import com.example.composecoursety.ui.theme.ComposeCourseTYTheme
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import kotlin.random.Random
 
+@ExperimentalPermissionsApi
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +52,7 @@ class MainActivity : ComponentActivity() {
             Font(R.font.merriweather_regular, FontWeight.Normal)
         )
         setContent {
-            MultiSelectedDemo()
+            PermissionDemo()
         }
     }
 
