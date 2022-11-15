@@ -52,12 +52,6 @@ fun MultiSelectedDemo() {
                         tint = Color.Green,
                         modifier = Modifier.size(20.dp)
                     )
-//                    Image(
-//                        imageVector = Icons.Default.Check,
-//                        contentDescription = "selected",
-//                        colorFilter = ColorFilter.tint(Color.Green),
-//                        modifier = Modifier.size(20.dp)
-//                    )
                 }
             }
         }

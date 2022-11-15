@@ -33,6 +33,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.composecoursety.allscreensize.AllScreenDemo
 import com.example.composecoursety.multiselect.MultiSelectedDemo
 import com.example.composecoursety.parallaxscroll.ParallaxScrollScreen
 import com.example.composecoursety.permission.PermissionDemo
@@ -52,7 +53,7 @@ class MainActivity : ComponentActivity() {
             Font(R.font.merriweather_regular, FontWeight.Normal)
         )
         setContent {
-            PermissionDemo()
+            AllScreenDemo()
         }
     }
 
