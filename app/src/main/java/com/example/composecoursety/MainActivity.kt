@@ -33,7 +33,9 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ExperimentalMotionApi
 import com.example.composecoursety.allscreensize.AllScreenDemo
+import com.example.composecoursety.motionlayout.ProfileHeadScene
 import com.example.composecoursety.multiselect.MultiSelectedDemo
 import com.example.composecoursety.parallaxscroll.ParallaxScrollScreen
 import com.example.composecoursety.permission.PermissionDemo
@@ -41,6 +43,7 @@ import com.example.composecoursety.ui.theme.ComposeCourseTYTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import kotlin.random.Random
 
+@ExperimentalMotionApi
 @ExperimentalPermissionsApi
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +56,7 @@ class MainActivity : ComponentActivity() {
             Font(R.font.merriweather_regular, FontWeight.Normal)
         )
         setContent {
-            AllScreenDemo()
+            ProfileHeadScene()
         }
     }
 
