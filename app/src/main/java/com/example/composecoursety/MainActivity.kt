@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ExperimentalMotionApi
 import com.example.composecoursety.allscreensize.AllScreenDemo
+import com.example.composecoursety.loadmorelist.ListItemsScene
 import com.example.composecoursety.motionlayout.ProfileHeadScene
 import com.example.composecoursety.multiselect.MultiSelectedDemo
 import com.example.composecoursety.parallaxscroll.ParallaxScrollScreen
@@ -56,7 +57,7 @@ class MainActivity : ComponentActivity() {
             Font(R.font.merriweather_regular, FontWeight.Normal)
         )
         setContent {
-            ProfileHeadScene()
+            ListItemsScene()
         }
     }
 
