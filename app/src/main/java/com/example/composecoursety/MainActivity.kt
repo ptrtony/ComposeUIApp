@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ExperimentalMotionApi
 import com.example.composecoursety.allscreensize.AllScreenDemo
+import com.example.composecoursety.bottomsheet.BottomSheetDemo
 import com.example.composecoursety.loadmorelist.ListItemsScene
 import com.example.composecoursety.motionlayout.ProfileHeadScene
 import com.example.composecoursety.multiselect.MultiSelectedDemo
@@ -57,7 +58,9 @@ class MainActivity : ComponentActivity() {
             Font(R.font.merriweather_regular, FontWeight.Normal)
         )
         setContent {
-            ListItemsScene()
+            ComposeCourseTYTheme {
+                BottomSheetDemo()
+            }
         }
     }
 
