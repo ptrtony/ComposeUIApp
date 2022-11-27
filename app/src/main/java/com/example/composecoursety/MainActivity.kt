@@ -8,17 +8,13 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
-import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.SpanStyle
@@ -34,13 +30,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ExperimentalMotionApi
-import com.example.composecoursety.allscreensize.AllScreenDemo
 import com.example.composecoursety.bottomsheet.BottomSheetDemo
-import com.example.composecoursety.loadmorelist.ListItemsScene
-import com.example.composecoursety.motionlayout.ProfileHeadScene
-import com.example.composecoursety.multiselect.MultiSelectedDemo
-import com.example.composecoursety.parallaxscroll.ParallaxScrollScreen
-import com.example.composecoursety.permission.PermissionDemo
+import com.example.composecoursety.drawer.DrawerSceneDemo
 import com.example.composecoursety.ui.theme.ComposeCourseTYTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import kotlin.random.Random
@@ -59,7 +50,7 @@ class MainActivity : ComponentActivity() {
         )
         setContent {
             ComposeCourseTYTheme {
-                BottomSheetDemo()
+                DrawerSceneDemo()
             }
         }
     }
