@@ -30,8 +30,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ExperimentalMotionApi
-import com.example.composecoursety.deeplink.DeepLinkDemo
-import com.example.composecoursety.deeplink.TriggerDeepLinkGuide
 import com.example.composecoursety.ui.theme.ComposeCourseTYTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import kotlin.random.Random
@@ -50,7 +48,11 @@ class MainActivity : ComponentActivity() {
         )
         setContent {
             ComposeCourseTYTheme {
-                TriggerDeepLinkGuide(applicationContext)
+                LazyColumnList(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(color = Color.White)
+                )
             }
         }
     }

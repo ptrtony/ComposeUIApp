@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Main() {
+fun ThreeDAnimationMain() {
     Surface(
         color = Color(0xFF010101),
         modifier = Modifier
