@@ -15,11 +15,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.composecoursety.actionbar.ComposeUIContainer
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun BottomSheetDemo() {
+fun BottomSheetDemo(title: String?, navController: NavHostController) {
     val sheetState = rememberBottomSheetState(
         initialValue = BottomSheetValue.Collapsed,
         animationSpec = spring(
@@ -30,35 +32,37 @@ fun BottomSheetDemo() {
         bottomSheetState = sheetState
     )
     val scope = rememberCoroutineScope()
-    BottomSheetScaffold(
-        scaffoldState = scaffoldState,
-        sheetContent = {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(300.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(text = "Bottom sheet",
-            fontSize = 60.sp)
-        }
-    },
-    sheetContentColor = Color.Green) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ) {
-            Button(onClick = {
-                scope.launch {
-                    if (sheetState.isCollapsed) {
-                        sheetState.expand()
-                    } else {
-                        sheetState.collapse()
-                    }
+    ComposeUIContainer(title = title, navHostController = navController) {
+        BottomSheetScaffold(
+            scaffoldState = scaffoldState,
+            sheetContent = {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(300.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(text = "Bottom sheet",
+                        fontSize = 60.sp)
                 }
-            }) {
-                Text(text = "Toggle sheet")
+            },
+            sheetContentColor = Color.Green) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Button(onClick = {
+                    scope.launch {
+                        if (sheetState.isCollapsed) {
+                            sheetState.expand()
+                        } else {
+                            sheetState.collapse()
+                        }
+                    }
+                }) {
+                    Text(text = "Toggle sheet")
+                }
             }
         }
     }

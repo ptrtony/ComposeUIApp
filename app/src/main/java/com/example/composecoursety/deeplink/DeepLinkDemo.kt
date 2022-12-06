@@ -16,59 +16,63 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.app.TaskStackBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import androidx.navigation.navDeepLink
+import com.example.composecoursety.actionbar.ComposeUIContainer
 
 @Composable
-fun DeepLinkDemo() {
-    val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "home") {
-        composable("home") {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Button(
-                    onClick = {
-                        navController.navigate("detail")
-                    }, modifier = Modifier
-                        .clip(RoundedCornerShape(5.dp))
-
+fun DeepLinkDemo(title: String?, controller: NavHostController) {
+    ComposeUIContainer(title = title, navHostController = controller) {
+        val navController = rememberNavController()
+        NavHost(navController = navController, startDestination = "home") {
+            composable("home") {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Text(
-                        text = "Go to details",
-                        color = Color.White
-                    )
+                    Button(
+                        onClick = {
+                            navController.navigate("detail")
+                        }, modifier = Modifier
+                            .clip(RoundedCornerShape(5.dp))
+
+                    ) {
+                        Text(
+                            text = "Go to details",
+                            color = Color.White
+                        )
+                    }
                 }
             }
-        }
-        composable(
-            route = "detail",
-            deepLinks = listOf(
-                navDeepLink {
-                    uriPattern = "https://pl-coding.com/{id}"
-                    action = Intent.ACTION_VIEW
-                }
-            ),
-            arguments = listOf(
-                navArgument("id") {
-                    type = NavType.IntType
-                    defaultValue = -1
-                }
-            )
-        ) { entry ->
-            val id = entry.arguments?.getInt("id")
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "The id is $id",
+            composable(
+                route = "detail",
+                deepLinks = listOf(
+                    navDeepLink {
+                        uriPattern = "https://pl-coding.com/{id}"
+                        action = Intent.ACTION_VIEW
+                    }
+                ),
+                arguments = listOf(
+                    navArgument("id") {
+                        type = NavType.IntType
+                        defaultValue = -1
+                    }
                 )
+            ) { entry ->
+                val id = entry.arguments?.getInt("id")
+                Box(
+                    modifier = Modifier.fillMaxSize(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "The id is $id",
+                    )
+                }
             }
         }
     }

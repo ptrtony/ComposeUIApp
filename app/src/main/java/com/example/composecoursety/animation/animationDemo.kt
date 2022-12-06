@@ -20,9 +20,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.composecoursety.actionbar.ComposeUIContainer
 
 @Composable
-fun animationDpAsStateDemo() {
+fun animationDpAsStateDemo(title: String?, navController: NavHostController) {
     var sizeState by remember {
         mutableStateOf(200.dp)
     }
@@ -46,13 +48,15 @@ fun animationDpAsStateDemo() {
             tween(durationMillis = 2000),
             repeatMode = RepeatMode.Reverse
         ))
-    Box(modifier = Modifier
-        .background(color = color)
-        .size(size.value),
-    contentAlignment = Alignment.Center) {
-        Button(onClick = { sizeState += 50.dp },
-        ) {
-            Text(text = "reScreen size", color = Color.White)
+    ComposeUIContainer(title = title, navHostController = navController) {
+        Box(modifier = Modifier
+            .background(color = color)
+            .size(size.value),
+            contentAlignment = Alignment.Center) {
+            Button(onClick = { sizeState += 50.dp },
+            ) {
+                Text(text = "reScreen size", color = Color.White)
+            }
         }
     }
 }

@@ -50,8 +50,8 @@ class MainActivity : ComponentActivity() {
             ComposeCourseTYTheme {
                 LazyColumnList(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .background(color = Color.White)
+                        .fillMaxSize(),
+                    this
                 )
             }
         }

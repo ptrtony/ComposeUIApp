@@ -26,7 +26,9 @@ import androidx.compose.ui.layout.boundsInWindow
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.composecoursety.R
+import com.example.composecoursety.actionbar.ComposeUIContainer
 import java.util.logging.Logger
 import kotlin.math.PI
 import kotlin.math.atan2
@@ -34,30 +36,33 @@ import kotlin.math.roundToInt
 
 @ExperimentalComposeUiApi
 @Composable
-fun Output() {
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.Black)
-        , contentAlignment = Alignment.Center) {
-        /*CircleProgress(0.8f, 100)*/
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .height(200.dp)
-            .border(
-                5.dp,
-                color = Color.Green,
-                shape = RoundedCornerShape(corner = CornerSize(5.dp))
-            ).padding(15.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Start) {
-            val percent = remember {
-                mutableStateOf(0f)
+fun Output(title: String?, navController: NavHostController) {
+    ComposeUIContainer(title = title, navHostController = navController) {
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black)
+            , contentAlignment = Alignment.Center) {
+            /*CircleProgress(0.8f, 100)*/
+            Row(modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .border(
+                    5.dp,
+                    color = Color.Green,
+                    shape = RoundedCornerShape(corner = CornerSize(5.dp))
+                )
+                .padding(15.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Start) {
+                val percent = remember {
+                    mutableStateOf(0f)
+                }
+                MusicKnob(modifier = Modifier.size(100.dp)) {
+                    percent.value = it
+                }
+                Spacer(modifier = Modifier.width(10.dp))
+                VolumeBox(modifier = Modifier.height(100.dp), actionBar = (percent.value * 10).roundToInt())
             }
-            MusicKnob(modifier = Modifier.size(100.dp)) {
-                percent.value = it
-            }
-            Spacer(modifier = Modifier.width(10.dp))
-            VolumeBox(modifier = Modifier.height(100.dp), actionBar = (percent.value * 10).roundToInt())
         }
     }
 }
